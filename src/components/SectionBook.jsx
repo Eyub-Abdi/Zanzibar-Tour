@@ -5,8 +5,8 @@ function SectionBook() {
         <div className="book">
           <div className="book__form">
             <form action="#" className="form">
-              <div className="u-margin-bottom-medium">
-                <h2 className="heading-secondary">Start booking nows</h2>
+              <div className="u-margin-bottom-small">
+                <h2 className="heading-secondary">Start booking now</h2>
               </div>
 
               <div className="form__group">
@@ -23,23 +23,18 @@ function SectionBook() {
                 </label>
               </div>
 
-              <div className="form__group u-margin-bottom-medium">
-                <div className="form__radio-group">
-                  <input type="radio" className="form__radio-input" id="small" name="size" />
-                  <span className="form__radio-button"></span>
-                  <label htmlFor="small" className="form__radio-label">
-                    Small tour group
-                  </label>
-                </div>
-
-                <div className="form__radio-group">
-                  <input type="radio" className="form__radio-input" id="large" name="size" />
-                  <span className="form__radio-button"></span>
-                  <label htmlFor="large" className="form__radio-label">
-                    Large tour group
-                  </label>
-                </div>
+              <div className="form__group">
+                <select className="form__input" placeholder="Where are you from?" id="email" required>
+                  <option value="Tanzania">TZ</option>
+                  <option>Uk</option>
+                  <option>USA</option>
+                  <option>France</option>
+                </select>
+                <label htmlFor="email" className="form__label">
+                  Country
+                </label>
               </div>
+
               <div className="form__group">
                 <button className="btn btn--green">Next step &rarr;</button>
               </div>
