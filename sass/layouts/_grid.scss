@@ -1,3 +1,6 @@
+@import '../abstracts/variables.scss';
+@import '../abstracts/mixins.scss';
+
 .row {
   max-width: $grid-width;
   // background-color: #ffff00;

@@ -1,6 +1,5 @@
-import Button from '../buttons/Button'
-import './header.scss'
-// import './../../sass/components/button.scss'
+import Button from './Button'
+
 export default function Header() {
   return (
     <header className="header">
@@ -10,12 +9,8 @@ export default function Header() {
       <div className="header__text-box">
         <h1 className="heading-primary">
           <span className="heading-primary--main">ZANZIBAR ISLAND</span>
-          <span className="heading-primary--sub">Is where life happens</span>
+          <span className="heading-primary--sub">Welcome to Zanzibar</span>
         </h1>
-        {/* <a href="#" className="btn btn--white btn--animated">
-            Discover our tours
-          </a> */}
-
         <Button linkTo="home" />
       </div>
     </header>
