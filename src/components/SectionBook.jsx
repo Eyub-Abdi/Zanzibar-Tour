@@ -1,10 +1,19 @@
+import { useNavigate } from 'react-router-dom'
+import PopUp from './PopUp'
+const a = true
 function SectionBook() {
+  const navigate = useNavigate()
+  const passdataToTheNextStep = () => {
+    // alert('Passing data to the popup')
+    // navigate('#popup')
+    if (a) <PopUp />
+  }
   return (
-    <section className="section-book">
+    <section className="section-book" id="section-book">
       <div className="row">
         <div className="book">
           <div className="book__form">
-            <form action="#" className="form">
+            <form onSubmit={passdataToTheNextStep} className="form">
               <div className="u-margin-bottom-small">
                 <h2 className="heading-secondary">Start booking now</h2>
               </div>

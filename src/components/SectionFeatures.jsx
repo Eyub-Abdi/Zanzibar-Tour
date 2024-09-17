@@ -1,3 +1,4 @@
+import { MdForest } from 'react-icons/md'
 function SectionFeatures() {
   return (
     <section className="section-features">
@@ -26,7 +27,7 @@ function SectionFeatures() {
         </div>
         <div className="col-1-of-4">
           <div className="feature-box">
-            <i className="feature-box__icon icon-basic-heart"></i>
+            {/* <MdForest className="feature-box__icon icon-basic-heart" /> */}
             <h3 className="heading-tertiary u-margin-bottom-small">Jozani Forest</h3>
             <p className="feature-box__text">Visit the Jozani Chwaka Bay National Park, home to the rare Red Colobus monkeys and lush tropical flora.</p>
           </div>

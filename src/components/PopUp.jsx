@@ -1,4 +1,12 @@
+import { useNavigate } from 'react-router-dom'
+
 function PopUp() {
+  const navigate = useNavigate()
+  const handleSubmit = () => {
+    // e.preventDefalut()
+    alert('Some data has been submited')
+    navigate('/')
+  }
   return (
     <div className="popup" id="popup">
       <div className="popup__content">
@@ -10,10 +18,25 @@ function PopUp() {
           <a href="#section-tours" className="popup__close">
             &times;
           </a>
-          <h2 className="heading-secondary u-margin-bottom-small">Start booking now</h2>
+          <h2 className="heading-secondary u-margin-bottom-small">Finish Booking</h2>
           <h2 className="heading-tertiary u-margin-bottom-small">Booking is free, All payments will be done in Zanzibar</h2>
-          <p className="popup__text">Whether you're seeking relaxation or adventure, Zanzibar has something for everyone. Contact us today to book your unforgettable island experience.</p>
-          <button className="btn btn--green btn--animeted">Book now</button>
+
+          <form onSubmit={handleSubmit} className="form">
+            <div className="form__group">
+              <input type="number" className="form__input" placeholder="How many of are comming?" id="name" required />
+              <label htmlFor="name" className="form__label">
+                How many of you
+              </label>
+            </div>
+
+            <div className="form__group">
+              <input type="date" className="form__input" placeholder="When do we meet" id="email" required />
+              <label htmlFor="email" className="form__label">
+                Date to arrive
+              </label>
+            </div>
+            <button className="btn btn--green btn--animeted">Book now</button>
+          </form>
         </div>
       </div>
     </div>

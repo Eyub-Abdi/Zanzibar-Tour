@@ -28,7 +28,7 @@ function SectionTour() {
                   <p className="card__price-only">Only</p>
                   <p className="card__price-value">$297</p>
                 </div>
-                <a href="#popup" className="btn btn--white">
+                <a href="#section-book" className="btn btn--white">
                   Book now
                 </a>
               </div>
@@ -90,7 +90,7 @@ function SectionTour() {
                   <p className="card__price-only">Only</p>
                   <p className="card__price-value">$897</p>
                 </div>
-                <a href="#popup" className="btn btn--white">
+                <a href="#section-book" className="btn btn--white">
                   Book now
                 </a>
               </div>
