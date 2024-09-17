@@ -13,7 +13,7 @@ function SectionFeatures() {
           <div className="feature-box">
             <i className="feature-box__icon icon-basic-compass"></i>
             <h3 className="heading-tertiary u-margin-bottom-small">Stone Town Tour</h3>
-            <p className="feature-box__text">Immerse yourself in the history of Stone Town, a UNESCO World Heritage site, with its narrow streets, ancient buildings, and vibrant markets.</p>
+            <p className="feature-box__text">Immerse yourself in the history of Stone Town. World Heritage site, with its narrow streets, ancient buildings, and vibrant markets.</p>
           </div>
         </div>
 

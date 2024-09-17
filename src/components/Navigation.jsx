@@ -11,13 +11,13 @@ function Navigation() {
         <ul className="navigation__list">
           <li className="nagivation__item">
             <a href="#" className="navigation__link">
-              <span>01</span>About Natour
+              <span>01</span>About Zanzibar
             </a>
           </li>
 
           <li className="navigation__item">
             <a href="#" className="navigation__link">
-              <span>02</span>Your benfits
+              <span>02</span>Your Hotels
             </a>
           </li>
 
@@ -29,8 +29,7 @@ function Navigation() {
 
           <li className="navigation__item">
             <a href="#" className="navigation__link">
-              {' '}
-              <span>04</span>Stories
+              <span>04</span>Your Guides
             </a>
           </li>
 
