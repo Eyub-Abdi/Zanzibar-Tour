@@ -13,9 +13,7 @@ function PopUp() {
           <h2 className="heading-secondary u-margin-bottom-small">Start booking now</h2>
           <h2 className="heading-tertiary u-margin-bottom-small">Booking is free, All payments will be done in Zanzibar</h2>
           <p className="popup__text">Whether you're seeking relaxation or adventure, Zanzibar has something for everyone. Contact us today to book your unforgettable island experience.</p>
-          <a href="#" className="btn btn--green">
-            Book now
-          </a>
+          <button className="btn btn--green btn--animeted">Book now</button>
         </div>
       </div>
     </div>
