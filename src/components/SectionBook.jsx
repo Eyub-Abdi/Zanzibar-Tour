@@ -1,7 +1,20 @@
 import { useNavigate } from 'react-router-dom'
 import PopUp from './PopUp'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import countries from '../countries'
 const a = true
 function SectionBook() {
+  const [countryList, setCountryList] = useState(countries)
+  console.log(countryList)
+  // useEffect(() => {
+  //   axios
+  //     .get('https://restcountries.com/v3.1/all')
+  //     .then(respose => {
+  //       console.log(respose.data)
+  //     })
+  //     .catch(err => console.log(err.message))
+  // }, [])
   const navigate = useNavigate()
   const passdataToTheNextStep = () => {
     // alert('Passing data to the popup')
@@ -34,10 +47,15 @@ function SectionBook() {
 
               <div className="form__group">
                 <select className="form__input" placeholder="Where are you from?" id="email" required>
-                  <option value="Tanzania">TZ</option>
-                  <option>Uk</option>
-                  <option>USA</option>
-                  <option>France</option>
+                  <option value="">Select your country</option>
+                  {countryList.map((country, index) => (
+                    <option key={index} value={country}>
+                      {country}
+                    </option>
+                  ))}
+
+                  {/* <option>USA</option>
+                  <option>France</option> */}
                 </select>
                 <label htmlFor="email" className="form__label">
                   Country
