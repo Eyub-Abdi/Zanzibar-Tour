@@ -10,14 +10,14 @@ function SectionTour() {
             <div className="card__side card__side--front">
               <div className="card__picture card__picture--1">&nbsp;</div>
               <h4 className="card__heading">
-                <span className="card__heading-span card__heading-span--1">The Sea Explorer</span>
+                <span className="card__heading-span card__heading-span--1">Voyage To Prison Island</span>
               </h4>
               <div className="card__details">
                 <ul>
-                  <li>3 day tours</li>
+                  <li>half day tour</li>
                   <li>up to 30 people</li>
                   <li>2 tour guides</li>
-                  <li>sleep in cozy hotels</li>
+                  <li>sea foods and fruits</li>
                   <li>Difficulty: easy</li>
                 </ul>
               </div>
@@ -41,14 +41,14 @@ function SectionTour() {
             <div className="card__side card__side--front">
               <div className="card__picture card__picture--2">&nbsp;</div>
               <h4 className="card__heading">
-                <span className="card__heading-span card__heading-span--2">The Forest Hiker</span>
+                <span className="card__heading-span card__heading-span--2">Explore Safari blue</span>
               </h4>
               <div className="card__details">
                 <ul>
-                  <li>7 day tours</li>
+                  <li>full day tour</li>
                   <li>up to 40 people</li>
                   <li>6 tour guides</li>
-                  <li>sleep in provided tents</li>
+                  <li>sea foods and fruits</li>
                   <li>Difficulty: medium</li>
                 </ul>
               </div>
@@ -72,14 +72,14 @@ function SectionTour() {
             <div className="card__side card__side--front">
               <div className="card__picture card__picture--3">&nbsp;</div>
               <h4 className="card__heading">
-                <span className="card__heading-span card__heading-span--3">The Snow adventurer</span>
+                <span className="card__heading-span card__heading-span--3">Mnemba Island</span>
               </h4>
               <div className="card__details">
                 <ul>
-                  <li>5 day tours</li>
+                  <li>half day tour</li>
                   <li>up to 15 people</li>
                   <li>3 tour guides</li>
-                  <li>sleep in provided tints</li>
+                  <li>sea foods and fruits</li>
                   <li>Difficulty: Hard</li>
                 </ul>
               </div>

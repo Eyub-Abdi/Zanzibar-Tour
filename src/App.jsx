@@ -43,7 +43,7 @@ export default function App() {
             </Main>
           }
         />
-        {/* <Route path="/popup" element={<PopUp />} /> */}
+        <Route path="/popup" element={<PopUp />} />
       </Routes>
       <Footer />
       {/* <PopUp /> */}

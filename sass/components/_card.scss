@@ -47,18 +47,19 @@
   &__picture {
     background-size: cover;
     height: 25rem;
-    background-blend-mode: screen;
+    // background-blend-mode: screen;
+    background-blend-mode: color;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
     &--1 {
-      background-image: linear-gradient($color-secondary-light, $color-secondary-dark), url(../../img/nat-5.jpg);
+      background-image: linear-gradient($color-secondary-light, $color-secondary-dark), url(../../img/prison-island.jpg);
     }
     &--2 {
-      background-image: linear-gradient($primary-color-light, $primary-color-dark), url(../../img/nat-6.jpg);
+      background-image: linear-gradient($primary-color-light, $primary-color-dark), url(../../img/safari-blue.jpg);
     }
     &--3 {
-      background-image: linear-gradient($color-tertiary-light, $color-tertiary-dark), url(../../img/nat-7.jpg);
+      background-image: linear-gradient($color-tertiary-light, $color-tertiary-dark), url(../../img/mnemba-island.jpg);
     }
   }
 
