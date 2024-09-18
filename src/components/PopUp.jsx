@@ -7,6 +7,7 @@ function PopUp() {
     alert('Some data has been submited')
     navigate('/')
   }
+  // Handle data subimition
   return (
     <div className="popup" id="popup">
       <div className="popup__content">

@@ -3,7 +3,6 @@ import PopUp from './PopUp'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import countries from '../countries'
-const a = true
 function SectionBook() {
   const [countryList, setCountryList] = useState(countries)
   console.log(countryList)
@@ -19,7 +18,6 @@ function SectionBook() {
   const passdataToTheNextStep = () => {
     // alert('Passing data to the popup')
     // navigate('#popup')
-    if (a) <PopUp />
   }
   return (
     <section className="section-book" id="section-book">
@@ -47,9 +45,9 @@ function SectionBook() {
 
               <div className="form__group">
                 <select className="form__input" placeholder="Where are you from?" id="email" required>
-                  <option value="">Select your country</option>
+                  <option value="">Where are you from?</option>
                   {countryList.map((country, index) => (
-                    <option key={index} value={country}>
+                    <option key={index} value={country} className="paragraph">
                       {country}
                     </option>
                   ))}
