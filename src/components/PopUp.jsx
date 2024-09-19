@@ -1,22 +1,35 @@
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+// CONTEXTS
+import BookingContext from '../BookingContext'
 
 function PopUp() {
+  const [numberOfGuests, setNumberOfGuests] = useState()
+  const [arrivingDate, setArrivingDate] = useState()
+
   const navigate = useNavigate()
   const handleSubmit = () => {
     // e.preventDefalut()
-    alert('Some data has been submited')
+    // alert('Some data has been submited')
     navigate('/')
   }
+
+  const hidePopUp = () => {
+    console.log('Auu')
+    navigate('/')
+  }
+  const prevData = useContext(BookingContext)
+  console.log(prevData)
   // Handle data subimition
   return (
-    <div className="popup" id="popup">
+    <div className={`popup ${hidePopUp.close}`} id="popup">
       <div className="popup__content">
         <div className="popup__left">
           <img src="./img/nat-8.jpg" alt="Tour photo" className="popup__img" />
           <img src="./img/nat-9.jpg" alt="Tour photo" className="popup__img" />
         </div>
         <div className="popup__right">
-          <a href="#section-tours" className="popup__close">
+          <a onClick={hidePopUp} href="#section-tours" className="popup__close">
             &times;
           </a>
           <h2 className="heading-secondary u-margin-bottom-small">Finish Booking</h2>
@@ -24,14 +37,14 @@ function PopUp() {
 
           <form onSubmit={handleSubmit} className="form">
             <div className="form__group">
-              <input type="number" className="form__input" placeholder="How many of are comming?" id="name" required />
+              <input type="number" className="form__input" placeholder="How many of you are comming?" defaultValue={1} id="name" required style={{ backgroundColor: '#eee', fontSize: '1.8rem' }} onChange={event => setNumberOfGuests(event.target.value)} />
               <label htmlFor="name" className="form__label">
                 How many of you
               </label>
             </div>
 
             <div className="form__group">
-              <input type="date" className="form__input" placeholder="When do we meet" id="email" required />
+              <input type="date" className="form__input" placeholder="When do we meet" id="email" style={{ backgroundColor: '#eee', fontSize: '1.8rem' }} required onChange={event => setArrivingDate(event.target.value)} />
               <label htmlFor="email" className="form__label">
                 Date to arrive
               </label>
