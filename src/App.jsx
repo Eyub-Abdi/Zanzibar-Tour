@@ -10,9 +10,14 @@ import SectionBook from './components/SectionBook'
 import Footer from './components/Footer'
 import PopUp from './components/PopUp'
 import Navigation from './components/Navigation'
+import FlashMassege from './components/FlashMassege'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useContext } from 'react'
+import BookingContext from './BookingContext'
 
 export default function App() {
+  const prevData = useContext(BookingContext)
+  console.log(prevData)
   return (
     <BrowserRouter>
       <Header />
@@ -43,10 +48,11 @@ export default function App() {
             </Main>
           }
         />
-        <Route path="/popup" element={<PopUp />} />
+
+        <Route path="/popup" element={<PopUp data={prevData} />} />
       </Routes>
+      {/* <FlashMassege /> */}
       <Footer />
-      {/* <PopUp /> */}
     </BrowserRouter>
   )
 }
