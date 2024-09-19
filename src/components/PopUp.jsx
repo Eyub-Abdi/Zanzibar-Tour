@@ -2,11 +2,12 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 // CONTEXTS
 import BookingContext from '../BookingContext'
+// import Joi from 'joi'
 
-function PopUp() {
+function PopUp({ data }) {
   const [numberOfGuests, setNumberOfGuests] = useState()
   const [arrivingDate, setArrivingDate] = useState()
-
+  console.log(data)
   const navigate = useNavigate()
   const handleSubmit = () => {
     // e.preventDefalut()
@@ -18,8 +19,8 @@ function PopUp() {
     console.log('Auu')
     navigate('/')
   }
-  const prevData = useContext(BookingContext)
-  console.log(prevData)
+  // const prevData = useContext(BookingContext)
+  // console.log(prevData)
   // Handle data subimition
   return (
     <div className={`popup ${hidePopUp.close}`} id="popup">
