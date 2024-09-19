@@ -1,44 +1,43 @@
 import { useNavigate } from 'react-router-dom'
-// import PopUp from './PopUp'
-import { useState, useEffect } from 'react'
-// import axios from 'axios'
+import Joi from 'joi'
+import { useState } from 'react'
 import countries from '../countries'
-import { data } from 'framer-motion/client'
+// CONTEXT
 import BookingContext from '../BookingContext'
+import FlashMassege from './FlashMassege'
+
 function SectionBook() {
-  const [countryList] = useState(countries)
-  const [fullName, setFullName] = useState('')
+  const [guestData, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')
-  const [isDisabled, setIsDesabled] = useState(true)
 
-  // const data = {
-  //   fullName,
-  //   email,
-  //   country
-  // }
-  useEffect(() => {
-    // axios
-    //   .get('https://restcountries.com/v3.1/all')
-    //   .then(respose => {
-    //     console.log(respose.data)
-    //   })
-    //   .catch(err => console.log(err.message))
-    if (data.fullName !== '' && data.email !== '' && data.country !== '') setIsDesabled(!isDisabled)
-  }, [])
+  const formSchema = Joi.object({
+    fullName: Joi.string().min(3).max(50).required().messages({ 'string.empty': 'Please enter your name', 'string.min': 'Name must be at least 3 charactors', 'string.max': 'Name should be less then 50 charactors' }),
+    email: Joi.string()
+      .messages({ 'string.empty': 'Please enter your email', 'string.email': 'Please enter a valid email' })
+      .email({ tlds: { allow: false } })
+      .required(),
+    country: Joi.string().min(3).max(100).required().messages({ 'string.empty': 'Please select your country' })
+  })
 
   const navigate = useNavigate()
+  const { error, value } = formSchema.validate({ fullName: guestData, email, country })
+
   const passdataToTheNextStep = event => {
-    // alert('Passing data to the popup')
     event.preventDefault()
-    console.log(data)
+
+    // console.log(error)
+    console.log(value)
+    if (error) return <FlashMassege /> //console.log(error.details[0].message)
+
+    // alert('Passing data to the popup')
     navigate('/popup')
   }
-  let btnClasses = 'btn'
+
   return (
-    <BookingContext.Provider value={{ fullName, email, country }}>
+    <BookingContext.Provider value={value}>
+      {console.log(value)}
       <section className="section-book" id="section-book">
-        {/* <PopUp /> */}
         <div className="row">
           <div className="book">
             <div className="book__form">
@@ -64,7 +63,7 @@ function SectionBook() {
                 <div className="form__group">
                   <select className="form__input" placeholder="Where are you from?" id="country" required onChange={event => setCountry(event.target.value)}>
                     <option value="">Where are you from?</option>
-                    {countryList.map((country, index) => (
+                    {countries.map((country, index) => (
                       <option key={index} value={country} className="paragraph">
                         {country}
                       </option>
@@ -74,12 +73,12 @@ function SectionBook() {
                     Country
                   </label>
                 </div>
+                <div className="form__group">
+                  <button className="btn btn--green btn--animeted" onClick={passdataToTheNextStep}>
+                    Next step &rarr;
+                  </button>
+                </div>
               </form>
-              <div className="form__group">
-                <button className={isDisabled ? btnClasses + ' btn--disabled' : btnClasses + ' btn--green'} onClick={passdataToTheNextStep}>
-                  Next step &rarr;
-                </button>
-              </div>
             </div>
           </div>
         </div>
