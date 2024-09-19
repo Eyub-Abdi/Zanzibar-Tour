@@ -33,6 +33,16 @@
     box-shadow: 0 0.5rem 1rem rgba($black-color, 0.2);
   }
 
+  &--disabled {
+    background-color: $color-gray-light-2;
+    cursor: not-allowed;
+    box-shadow: none !important;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
   &--white {
     background-color: $color-white;
     color: $color-gray-dark;
