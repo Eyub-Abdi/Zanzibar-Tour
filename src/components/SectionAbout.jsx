@@ -19,7 +19,7 @@ function SectionAbout() {
           <div className="composition">
             <img src="./img/zanzibar-1.jpg" alt="Photo 1" className="composition__photo composition__photo--p1" />
             <img src="./img/zanzibar-2.jpg" alt="Photo 2" className="composition__photo composition__photo--p2" />
-            <img src="./img/zanzibar-3.jpg" alt="Photo 3 " className="composition__photo composition__photo--p3" />
+            <img src="./img/prison-island.jpg" alt="Photo 3 " className="composition__photo composition__photo--p3" />
           </div>
         </div>
       </div>
