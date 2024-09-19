@@ -10,14 +10,15 @@ import SectionBook from './components/SectionBook'
 import Footer from './components/Footer'
 import PopUp from './components/PopUp'
 import Navigation from './components/Navigation'
-import FlashMassege from './components/FlashMassege'
+import FlashMassage from './components/FlashMassage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useContext } from 'react'
-import BookingContext from './BookingContext'
+import { useEffect, useState } from 'react'
 
 export default function App() {
-  const prevData = useContext(BookingContext)
-  console.log(prevData)
+  const [prevData, setPrevData] = useState(localStorage.getItem('prevData'))
+  useEffect(() => {
+    setPrevData(true)
+  }, [prevData])
   return (
     <BrowserRouter>
       <Header />
@@ -32,7 +33,6 @@ export default function App() {
               <SectionTour />
               <SectionStories />
               <SectionBook />
-              {/* <PopUp /> */}
             </Main>
           }
         />
@@ -49,7 +49,7 @@ export default function App() {
           }
         />
 
-        <Route path="/popup" element={<PopUp data={prevData} />} />
+        <Route path="/popup" element={prevData ? <PopUp /> : window.history.replaceState({}, '', '/')} />
       </Routes>
       {/* <FlashMassege /> */}
       <Footer />
