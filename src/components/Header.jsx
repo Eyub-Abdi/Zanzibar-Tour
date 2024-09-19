@@ -11,7 +11,7 @@ export default function Header() {
           <span className="heading-primary--main">ZANZIBAR ISLAND</span>
           <span className="heading-primary--sub">Welcome to Zanzibar</span>
         </h1>
-        <Button linkTo="/" />
+        <Button linkTo="#section-features" />
       </div>
     </header>
   )
