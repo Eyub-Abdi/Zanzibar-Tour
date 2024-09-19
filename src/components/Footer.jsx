@@ -1,8 +1,9 @@
 function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__logo-box">
-        <img src="./img/logo-green-2x.png" alt="Logo full" className="footer__logo" />
+      <div className="footer__logo-box u-center-text">
+        <img src="./img/favicon.png" alt="Logo full" className="footer__logo" />
+        <h2 className="heading-secondary">See you in Zanzibar</h2>
       </div>
       <div className="row">
         <div className="col-1-of-2">
