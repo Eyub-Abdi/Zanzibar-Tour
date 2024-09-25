@@ -1,14 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 import Joi from 'joi'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import countries from '../countries'
 // COMPONENTS
-import FlashMassage from './FlashMassage'
+// import FlashMassage from './FlashMassage'
+import ErrorContext from '../ErrorContext'
 
 function SectionBook() {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')
+  const dispatch = useContext(ErrorContext)
 
   const formSchema = Joi.object({
     fullName: Joi.string().min(3).max(50).required().messages({ 'string.empty': 'Please enter your name', 'string.min': 'Name must be at least 3 charactors', 'string.max': 'Name should be less then 50 charactors' }),
@@ -21,13 +23,12 @@ function SectionBook() {
 
   const navigate = useNavigate()
   const { error, value } = formSchema.validate({ fullName, email, country })
-
   const passdataToTheNextStep = event => {
     event.preventDefault()
 
-    // console.log(error)
-    if (error) return <FlashMassage /> //console.log(error.details[0].message)
-    console.log(value)
+    console.log(error)
+
+    if (error) return dispatch({ type: 'showErr', payload: error.details[0].message })
 
     const valueAsString = JSON.stringify(value)
     localStorage.setItem('prevData', valueAsString)
