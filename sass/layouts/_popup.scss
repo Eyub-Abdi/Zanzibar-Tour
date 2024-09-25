@@ -5,6 +5,7 @@
   top: 0;
   left: 0;
   z-index: 943000;
+  z-index: 5499;
   background-color: rgba($color-gray-dark-3, 0.9);
   transition: all 0.3s;
   // opacity: 0;
@@ -37,7 +38,8 @@
     width: 66.6666667%;
     display: table-cell;
     vertical-align: middle;
-    padding: 3rem 5rem;
+    // padding: 3rem 5rem;
+    padding: 2.6rem 5rem;
   }
 
   &__img {
