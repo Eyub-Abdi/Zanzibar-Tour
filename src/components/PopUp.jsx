@@ -1,33 +1,47 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Joi from 'joi'
+import axios from 'axios'
+import ErrorContext from '../ErrorContext'
 
 function PopUp() {
   const [numberOfVisitor, setNumberOfVisitor] = useState()
   const [arrivingDate, setArrivingDate] = useState()
-
+  const dispatch = useContext(ErrorContext)
   const navigate = useNavigate()
   // Allow today in valid date list
   const today = new Date()
   today.setHours(0, 0, 0, 0)
 
   const schema = Joi.object({
-    numberOfVisitor: Joi.number().min(1).max(1000).required().messages({ 'any.required': 'Tell us how many people are comming?', 'number.min': 'How many of you are comming', 'number.max': 'Can not register more then 1000 people at the same time.' }),
+    numberOfVisitor: Joi.number().min(1).max(50).required().messages({ 'any.required': 'Tell us how many people are comming?', 'number.min': 'How many of you are comming', 'number.max': 'Can not register more then 50 people.' }),
     arrivingDate: Joi.date().min(today).required().messages({ 'any.required': 'Ops! so when will you come?', 'date.min': 'Date must be today or latter' })
   })
   const { error } = schema.validate({ numberOfVisitor, arrivingDate })
 
   const handleSubmit = event => {
     event.preventDefault()
-    if (error) return console.log(error.details[0].message)
+    if (error) return dispatch({ type: 'showErr', payload: error.details[0].message })
     const prevData = JSON.parse(localStorage.getItem('prevData'))
     // SUBMIT THIS DATA
     const totalData = { ...prevData, numberOfVisitor, arrivingDate }
     console.log(totalData)
-    localStorage.removeItem('prevData')
+    axios
+      .post('http://localhost:5000/api/visitors', totalData)
+      .then(() => {
+        dispatch({ type: 'spinner' })
+        console.log('Data has been submited..')
+        localStorage.removeItem('prevData')
+        navigate('/')
+        dispatch({ type: 'greenMsg' })
+      })
+      .catch(error => {
+        console.log(error.message)
+        dispatch({ type: 'showErr', payload: error.message })
+      })
+    console.log(totalData)
     // alert('Some data has been submited')
-    navigate('/')
   }
 
   const hidePopUp = () => {
@@ -39,8 +53,8 @@ function PopUp() {
     <div className={`popup ${hidePopUp.close}`} id="popup">
       <div className="popup__content">
         <div className="popup__left">
-          <img src="./img/nat-8.jpg" alt="Tour photo" className="popup__img" />
-          <img src="./img/nat-9.jpg" alt="Tour photo" className="popup__img" />
+          <img src="./img/zanzibar-7.jpg" alt="Tour photo" className="popup__img" />
+          {/* <img src="./img/nat-9.jpg" alt="Tour photo" className="popup__img" /> */}
         </div>
         <div className="popup__right">
           <a onClick={hidePopUp} href="#section-tours" className="popup__close">
