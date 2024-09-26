@@ -15,7 +15,6 @@ import FlashMassage from './components/FlashMassage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useEffect, useReducer, useState } from 'react'
 import ErrorContext from './ErrorContext'
-import Loader from './components/Loader'
 
 export default function App() {
   function reducer(state, action) {
@@ -23,14 +22,11 @@ export default function App() {
       case 'showErr':
         // state.flashError = { ...state, showErr: true, massage: 'Test massage' }
         setFlashError({ ...state, showErr: true, massage: action.payload })
-        console.log('dispatched')
+        console.log(state)
         break
       case 'mawe':
         console.log('Tumepokea mawe')
         // console.log('This is a draft', draft)
-        break
-      case 'spinner':
-        setSpinner(true)
         break
       case 'greenMsg':
         setGreenMsg(true)
@@ -42,23 +38,26 @@ export default function App() {
   const [prevData, setPrevData] = useState(localStorage.getItem('prevData'))
   const [flashError, setFlashError] = useState({ showErr: false, massage: '' })
   const [greenMsg, setGreenMsg] = useState(false)
-  const [spinner, setSpinner] = useState(true)
+
   console.log(`Flash error ${flashError.showErr}`)
   useEffect(() => {
     setPrevData(true)
-    // setFlashError({ showEroor: true, message: 'Nakuja' })
-    if (flashError.showErr.showErr) {
-      console.log(flashError.massage)
-    }
-  }, [prevData, flashError, greenMsg, flashError.massage])
+  }, [prevData])
+
+  useEffect(() => {
+    if (flashError.showErr) setFlashError({ showErr: false })
+  }, [flashError.showErr])
+
+  useEffect(() => {
+    setGreenMsg(false)
+  }, [greenMsg])
 
   const [state, dispatch] = useReducer(reducer, flashError)
-  console.log(state)
+  console.log(flashError.showErr)
   // onClick={ () => dispatch({ type: 'showErr' })}
   return (
     <BrowserRouter>
       <ErrorContext.Provider value={dispatch}>
-        {/* {spinner && <Loader />} */}
         <Header />
         <Navigation />
         <Routes>
@@ -89,7 +88,7 @@ export default function App() {
 
           <Route path="/popup" element={prevData ? <PopUp /> : window.history.replaceState({}, '', '/')} />
         </Routes>
-        <FlashMassage showFlash={greenMsg} status={'success'} title={'All done.'} description={'Your booking is done, See you in Zanzibar'} />
+        <FlashMassage showFlash={greenMsg} status={'success'} title={'Great choice.'} description={'Your booking is done, see you in Zanzibar'} />
         <FlashMassage showFlash={flashError.showErr} status={'error'} title={'Error'} description={flashError.massage} />
         <Footer />
       </ErrorContext.Provider>
