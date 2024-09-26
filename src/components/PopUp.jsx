@@ -17,8 +17,8 @@ function PopUp() {
   //   dispatch({ type: 'showErr', payload: error.details[0].message })
   // }, [error.details[0].message])
   const schema = Joi.object({
-    numberOfVisitor: Joi.number().min(1).max(50).required().messages({ 'any.required': 'Tell us how many people are comming?', 'number.min': 'How many of you are comming', 'number.max': 'Can not register more then 50 people.' }),
-    arrivingDate: Joi.date().min(today).required().messages({ 'any.required': 'Ops! so when will you come?', 'date.min': 'Date must be today or latter' })
+    numberOfVisitor: Joi.number().min(1).max(50).required().messages({ 'any.required': 'Tell us how many people are comming?', 'number.min': 'How many of you are comming?', 'number.max': 'Can not register more then 50 people.' }),
+    arrivingDate: Joi.date().min(today).required().messages({ 'any.required': 'Ops! so when will you come?', 'date.min': 'Date must be today or latter.' })
   })
   const { error } = schema.validate({ numberOfVisitor, arrivingDate })
 
@@ -32,11 +32,10 @@ function PopUp() {
     axios
       .post('http://localhost:5000/api/visitors', totalData)
       .then(() => {
-        dispatch({ type: 'spinner' })
         console.log('Data has been submited..')
         localStorage.removeItem('prevData')
         navigate('/')
-        dispatch({ type: 'greenMsg' })
+        dispatch({ type: 'greenMsg', payload: 'Your booking is done, see you in Zanzibar.' })
       })
       .catch(error => {
         console.log(error.message)

@@ -13,12 +13,12 @@ function SectionBook() {
   const dispatch = useContext(ErrorContext)
 
   const formSchema = Joi.object({
-    fullName: Joi.string().min(3).max(50).required().messages({ 'string.empty': 'Please enter your name', 'string.min': 'Name must be at least 3 charactors', 'string.max': 'Name should be less then 50 charactors' }),
+    fullName: Joi.string().min(3).max(50).required().messages({ 'string.empty': 'Please enter your name.', 'string.min': 'Name must be at least 3 charactors.', 'string.max': 'Name should be less then 50 charactors.' }),
     email: Joi.string()
-      .messages({ 'string.empty': 'Please enter your email', 'string.email': 'Please enter a valid email' })
+      .messages({ 'string.empty': 'Please enter your email.', 'string.email': 'Please enter valid email.' })
       .email({ tlds: { allow: false } })
       .required(),
-    country: Joi.string().min(3).max(100).required().messages({ 'string.empty': 'Please select your country' })
+    country: Joi.string().min(3).max(100).required().messages({ 'string.empty': 'Please select your country.' })
   })
 
   const navigate = useNavigate()
