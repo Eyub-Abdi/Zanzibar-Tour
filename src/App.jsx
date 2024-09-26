@@ -23,14 +23,13 @@ export default function App() {
       case 'showErr':
         // state.flashError = { ...state, showErr: true, massage: 'Test massage' }
         setFlashError({ ...state, showErr: true, massage: action.payload })
-        console.log(state)
         break
       case 'mawe':
         console.log('Tumepokea mawe')
         // console.log('This is a draft', draft)
         break
       case 'greenMsg':
-        setGreenMsg(true)
+        setGreenMsg({ ...state, showMsg: true, massage: action.payload })
         break
       default:
         return
@@ -38,9 +37,8 @@ export default function App() {
   }
   const [prevData, setPrevData] = useState(localStorage.getItem('prevData'))
   const [flashError, setFlashError] = useState({ showErr: false, massage: '' })
-  const [greenMsg, setGreenMsg] = useState(false)
+  const [greenMsg, setGreenMsg] = useState({ showMsg: false, massage: null })
 
-  console.log(`Flash error ${flashError.showErr}`)
   useEffect(() => {
     setPrevData(true)
   }, [prevData])
@@ -54,8 +52,6 @@ export default function App() {
   }, [greenMsg])
 
   const [state, dispatch] = useReducer(reducer, flashError)
-  console.log(flashError.showErr)
-  // onClick={ () => dispatch({ type: 'showErr' })}
   return (
     <BrowserRouter>
       <ErrorContext.Provider value={dispatch}>
@@ -92,7 +88,7 @@ export default function App() {
 
           {/* <Route path="/popup" element={prevData ? <PopUp /> : window.history.replaceState({}, '', '/')} /> */}
         </Routes>
-        <FlashMassage showFlash={greenMsg} status={'success'} title={'Great choice.'} description={'Your booking is done, see you in Zanzibar'} />
+        <FlashMassage showFlash={greenMsg.showMsg} status={'success'} title={'Great choice.'} description={greenMsg.massage} />
         <FlashMassage showFlash={flashError.showErr} status={'error'} title={'Error'} description={flashError.massage} />
         <Footer />
       </ErrorContext.Provider>
