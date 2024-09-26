@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function SectionAbout() {
   return (
     <section className="section-about">
@@ -11,9 +13,9 @@ function SectionAbout() {
           <p className="paragraph">Experience the enchanting beauty of Zanzibar, a paradise island where turquoise waters meet pristine white sands. Our tours offer you a chance to explore rich history, vibrant culture, and stunning natural wonders.</p>
           <h3 className="heading-tertiary u-margin-bottom-small">Why Choose Us?</h3>
           <p className="paragraph">Expert Guides: Our knowledgeable guides are passionate about Zanzibar and will share insider tips and stories, ensuring you get the most out of your visit.</p>
-          <a href="#" className="btn-text">
+          <Link to="/" className="btn-text">
             Learn more &rarr;
-          </a>
+          </Link>
         </div>
         <div className="col-1-of-2">
           <div className="composition">
