@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Joi from 'joi'
@@ -13,7 +13,9 @@ function PopUp() {
   // Allow today in valid date list
   const today = new Date()
   today.setHours(0, 0, 0, 0)
-
+  // useEffect(() => {
+  //   dispatch({ type: 'showErr', payload: error.details[0].message })
+  // }, [error.details[0].message])
   const schema = Joi.object({
     numberOfVisitor: Joi.number().min(1).max(50).required().messages({ 'any.required': 'Tell us how many people are comming?', 'number.min': 'How many of you are comming', 'number.max': 'Can not register more then 50 people.' }),
     arrivingDate: Joi.date().min(today).required().messages({ 'any.required': 'Ops! so when will you come?', 'date.min': 'Date must be today or latter' })
@@ -53,8 +55,8 @@ function PopUp() {
     <div className={`popup ${hidePopUp.close}`} id="popup">
       <div className="popup__content">
         <div className="popup__left">
-          <img src="./img/zanzibar-7.jpg" alt="Tour photo" className="popup__img" />
-          {/* <img src="./img/nat-9.jpg" alt="Tour photo" className="popup__img" /> */}
+          <img src="./img/zanzibar-8.jpg" alt="Tour photo" className="popup__img" />
+          {/* <img src="./img/zanzibar-7.jpg" alt="Tour photo" className="popup__img" /> */}
         </div>
         <div className="popup__right">
           <a onClick={hidePopUp} href="#section-tours" className="popup__close">
@@ -74,7 +76,7 @@ function PopUp() {
             <div className="form__group">
               <input type="date" className="form__input" placeholder="When do we meet" id="email" style={{ backgroundColor: '#eee', fontSize: '1.8rem' }} onChange={event => setArrivingDate(event.target.value)} />
               <label htmlFor="email" className="form__label">
-                Date to arrive
+                Arriving date?
               </label>
             </div>
             <button className="btn btn--green btn--animeted">Book now</button>

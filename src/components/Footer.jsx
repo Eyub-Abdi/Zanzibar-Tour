@@ -37,15 +37,9 @@ function Footer() {
         </div>
         <div className="col-1-of-2">
           <p className="footer__copyright">
-            Built by{' '}
             <a href="#" className="footer__link">
-              Ayub Abdi
-            </a>{' '}
-            for his creativity on{' '}
-            <a href="#" className="footer__link">
-              FINDING THE BEST TOUR PLATFORM IN ZANZIBAR
-            </a>{' '}
-            Copyright &copy; Ayub Abdi
+              THE BEST TOUR PLATFORM IN ZANZIBAR. HAKUNA MATATA
+            </a>
           </p>
         </div>
       </div>
