@@ -11,8 +11,9 @@ import Footer from './components/Footer'
 import PopUp from './components/PopUp'
 import Navigation from './components/Navigation'
 import FlashMassage from './components/FlashMassage'
+import Login from './components/Login'
 // SERVICES
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useEffect, useReducer, useState } from 'react'
 import ErrorContext from './ErrorContext'
 
@@ -58,6 +59,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ErrorContext.Provider value={dispatch}>
+        {/* <Login /> */}
         <Header />
         <Navigation />
         <Routes>
@@ -73,6 +75,7 @@ export default function App() {
               </Main>
             }
           />
+          <Route path="/mawe" element={<Login />} />
           <Route
             path="*"
             element={
@@ -85,8 +88,9 @@ export default function App() {
               </Main>
             }
           />
+          <Route path="/popup" element={prevData ? <PopUp /> : <Navigate to="/" />} />
 
-          <Route path="/popup" element={prevData ? <PopUp /> : window.history.replaceState({}, '', '/')} />
+          {/* <Route path="/popup" element={prevData ? <PopUp /> : window.history.replaceState({}, '', '/')} /> */}
         </Routes>
         <FlashMassage showFlash={greenMsg} status={'success'} title={'Great choice.'} description={'Your booking is done, see you in Zanzibar'} />
         <FlashMassage showFlash={flashError.showErr} status={'error'} title={'Error'} description={flashError.massage} />
