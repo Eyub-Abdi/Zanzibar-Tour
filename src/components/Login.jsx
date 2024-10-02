@@ -1,31 +1,40 @@
 import Joi from 'joi'
 import { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // CONTEXT
 import ErrorContext from '../ErrorContext'
+import axios from 'axios'
 
 function Login() {
   const [username, setUsername] = useState(null)
   const [password, setPassword] = useState(null)
   const dispatch = useContext(ErrorContext)
-  console.log({ username, password })
-
-  const userSchema = Joi.object({ username: Joi.string().min(3).max(50).required().messages({ 'string.empty': 'Invalid username or password' }), password: Joi.string().required().messages({ 'string.empty': 'Ivalid username or password' }) })
+  const navigate = useNavigate()
+  const userSchema = Joi.object({ username: Joi.string().min(3).max(50).required().messages({ 'string.empty': 'Invalid username or password.' }), password: Joi.string().required().messages({ 'string.empty': 'Ivalid username or password.' }) })
   const { error, value } = userSchema.validate({ username, password })
 
   const handleSubmit = event => {
     event.preventDefault()
     if (error && error.details[0].type === 'string.base') return dispatch({ type: 'showErr', payload: 'Please enter your username and password.' })
-    if (error) return dispatch({ type: 'showErr', payload: 'Invalid username or password' })
-    console.log('submited')
-    console.log(value)
+    if (error) return dispatch({ type: 'showErr', payload: 'Invalid username or password.' })
+    axios
+      .post('http://localhost:5000/api/auth', value)
+      .then(res => {
+        console.log(res)
+        dispatch({ type: 'greenMsg', payload: 'Login success.' })
+        localStorage.setItem('ZNZ-token', res.data)
+        navigate('/uongozi')
+      })
+      .catch(err => {
+        dispatch({ type: 'showErr', payload: 'Invalid username or password.' })
+        console.log(err)
+      })
   }
   return (
     <div className="popup" id="popup">
       <div className="popup__content">
         <div className="popup__left">
           <img src="./img/zanzibar-8.jpg" alt="Tour photo" className="popup__img" />
-          {/* <img src="./img/zanzibar-7.jpg" alt="Tour photo" className="popup__img" /> */}
         </div>
         <div className="popup__right">
           <Link to={'/'} className="popup__close">
