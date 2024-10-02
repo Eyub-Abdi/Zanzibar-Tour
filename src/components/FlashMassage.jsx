@@ -12,7 +12,7 @@ function FlashMassage({ showFlash, title, description, status }) {
         status, //: 'error',
         duration: 6000,
         isClosable: true,
-        padding: '20px'
+        padding: '40px'
       })
   }, [showFlash, toast, title, description, status])
   return null

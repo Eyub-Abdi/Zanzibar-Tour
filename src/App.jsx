@@ -16,6 +16,7 @@ import Login from './components/Login'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useEffect, useReducer, useState } from 'react'
 import ErrorContext from './ErrorContext'
+import Dashboard from './components/Dashboard'
 
 export default function App() {
   function reducer(state, action) {
@@ -84,6 +85,7 @@ export default function App() {
               </Main>
             }
           />
+          <Route path="/uongozi" element={<Dashboard />} />
           <Route path="/popup" element={prevData ? <PopUp /> : <Navigate to="/" />} />
 
           {/* <Route path="/popup" element={prevData ? <PopUp /> : window.history.replaceState({}, '', '/')} /> */}
