@@ -73,7 +73,7 @@ function SectionBook() {
                 </label>
               </div>
               <div className="form__group">
-                <button className="btn btn--green btn--animeted" onClick={passdataToTheNextStep}>
+                <button className="btnx btnx--green btn--animeted" onClick={passdataToTheNextStep}>
                   Next step &rarr;
                 </button>
               </div>

@@ -6,13 +6,13 @@ function SectionTour() {
       </div>
       <div className="row">
         <div className="col-1-of-3">
-          <div className="card">
-            <div className="card__side card__side--front">
-              <div className="card__picture card__picture--1">&nbsp;</div>
-              <h4 className="card__heading">
-                <span className="card__heading-span card__heading-span--1">Voyage To Prison Island</span>
+          <div className="xcard">
+            <div className="xcard__side xcard__side--front">
+              <div className="xcard__picture xcard__picture--1">&nbsp;</div>
+              <h4 className="xcard__heading">
+                <span className="xcard__heading-span xcard__heading-span--1">Voyage To Prison Island</span>
               </h4>
-              <div className="card__details">
+              <div className="xcard__details">
                 <ul>
                   <li>half day tour</li>
                   <li>up to 30 people</li>
@@ -22,13 +22,13 @@ function SectionTour() {
                 </ul>
               </div>
             </div>
-            <div className="card__side card__side--back card__side--back-1">
-              <div className="card__cta">
-                <div className="card__price-box">
-                  <p className="card__price-only">Only</p>
-                  <p className="card__price-value">$297</p>
+            <div className="xcard__side xcard__side--back xcard__side--back-1">
+              <div className="xcard__cta">
+                <div className="xcard__price-box">
+                  <p className="xcard__price-only">Only</p>
+                  <p className="xcard__price-value">$297</p>
                 </div>
-                <a href="#section-book" className="btn btn--white">
+                <a href="#section-book" className="btnx btnx--white">
                   Book now
                 </a>
               </div>
@@ -37,13 +37,13 @@ function SectionTour() {
         </div>
 
         <div className="col-1-of-3">
-          <div className="card">
-            <div className="card__side card__side--front">
-              <div className="card__picture card__picture--2">&nbsp;</div>
-              <h4 className="card__heading">
-                <span className="card__heading-span card__heading-span--2">Explore Safari blue</span>
+          <div className="xcard">
+            <div className="xcard__side xcard__side--front">
+              <div className="xcard__picture xcard__picture--2">&nbsp;</div>
+              <h4 className="xcard__heading">
+                <span className="xcard__heading-span xcard__heading-span--2">Explore Safari blue</span>
               </h4>
-              <div className="card__details">
+              <div className="xcard__details">
                 <ul>
                   <li>full day tour</li>
                   <li>up to 40 people</li>
@@ -53,13 +53,13 @@ function SectionTour() {
                 </ul>
               </div>
             </div>
-            <div className="card__side card__side--back card__side--back-2">
-              <div className="card__cta">
-                <div className="card__price-box">
-                  <p className="card__price-only">Only</p>
-                  <p className="card__price-value">$497</p>
+            <div className="xcard__side xcard__side--back xcard__side--back-2">
+              <div className="xcard__cta">
+                <div className="xcard__price-box">
+                  <p className="xcard__price-only">Only</p>
+                  <p className="xcard__price-value">$497</p>
                 </div>
-                <a href="#section-book" className="btn btn--white">
+                <a href="#section-book" className="btnx btnx--white">
                   Book now
                 </a>
               </div>
@@ -68,13 +68,13 @@ function SectionTour() {
         </div>
 
         <div className="col-1-of-3">
-          <div className="card">
-            <div className="card__side card__side--front">
-              <div className="card__picture card__picture--3">&nbsp;</div>
-              <h4 className="card__heading">
-                <span className="card__heading-span card__heading-span--3">Mnemba Island</span>
+          <div className="xcard">
+            <div className="xcard__side xcard__side--front">
+              <div className="xcard__picture xcard__picture--3">&nbsp;</div>
+              <h4 className="xcard__heading">
+                <span className="xcard__heading-span xcard__heading-span--3">Mnemba Island</span>
               </h4>
-              <div className="card__details">
+              <div className="xcard__details">
                 <ul>
                   <li>half day tour</li>
                   <li>up to 15 people</li>
@@ -84,13 +84,13 @@ function SectionTour() {
                 </ul>
               </div>
             </div>
-            <div className="card__side card__side--back card__side--back-3">
-              <div className="card__cta">
-                <div className="card__price-box">
-                  <p className="card__price-only">Only</p>
-                  <p className="card__price-value">$897</p>
+            <div className="xcard__side xcard__side--back xcard__side--back-3">
+              <div className="xcard__cta">
+                <div className="xcard__price-box">
+                  <p className="xcard__price-only">Only</p>
+                  <p className="xcard__price-value">$897</p>
                 </div>
-                <a href="#section-book" className="btn btn--white">
+                <a href="#section-book" className="btnx btnx--white">
                   Book now
                 </a>
               </div>
@@ -99,7 +99,7 @@ function SectionTour() {
         </div>
       </div>
       <div className="u-center-text u-margin-top-huge">
-        <a href="#" className="btn btn--green">
+        <a href="#" className="btnx btnx--green">
           Discover all tours
         </a>
       </div>

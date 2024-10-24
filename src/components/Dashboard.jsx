@@ -1,17 +1,27 @@
-import React from 'react'
-import { Grid, GridItem } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
+import Card from './Card'
+import axios from 'axios'
+import Table from './Table'
+import DashboardNav from './DashboardNav'
 
 function Dashboard() {
+  const [visitors, setVisitors] = useState([])
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/api/Visitors')
+      .then(res => setVisitors(res.data))
+      .catch(err => console.log(err))
+  }, [])
+  console.log(visitors)
+
   return (
-    <Grid templateColumns="repeat(5, 1fr)" gap={6}>
-      <GridItem w="100%" h="10" bg="blue.500">
-        Uongozi
-      </GridItem>
-      <GridItem w="100%" h="10" bg="blue.500" />
-      <GridItem w="100%" h="10" bg="blue.500" />
-      <GridItem w="100%" h="10" bg="blue.500" />
-      <GridItem w="100%" h="10" bg="blue.500" />
-    </Grid>
+    <section className="dashboard position-relative">
+      <DashboardNav />
+      <section className="p-4">
+        <Card />
+        <Table visitors={visitors} />
+      </section>
+    </section>
   )
 }
 

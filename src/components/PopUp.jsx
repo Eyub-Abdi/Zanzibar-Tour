@@ -70,7 +70,7 @@ function PopUp() {
                 Arriving date?
               </label>
             </div>
-            <button className="btn btn--green btn--animeted">Book now</button>
+            <button className="btnx btnx--green btn--animeted">Book now</button>
           </form>
         </div>
       </div>

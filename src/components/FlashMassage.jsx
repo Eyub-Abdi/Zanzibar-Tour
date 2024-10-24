@@ -10,9 +10,11 @@ function FlashMassage({ showFlash, title, description, status }) {
         title, //: 'Account created.',
         description, //: "We've created your account for you.",
         status, //: 'error',
-        duration: 6000,
+        duration: 600000000,
         isClosable: true,
-        padding: '40px'
+        sex: {
+          padding: '400px'
+        }
       })
   }, [showFlash, toast, title, description, status])
   return null

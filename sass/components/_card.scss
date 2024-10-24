@@ -1,4 +1,4 @@
-.card {
+.xcard {
   -webkit-perspective: 150rem;
   perspective: 150rem;
   position: relative;
@@ -19,6 +19,7 @@
     &--front {
       background-color: $color-white;
       position: relative;
+      border-color: transparent !important;
     }
 
     &--back {

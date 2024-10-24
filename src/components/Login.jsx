@@ -22,7 +22,7 @@ function Login() {
       .then(res => {
         console.log(res)
         dispatch({ type: 'greenMsg', payload: 'Login success.' })
-        localStorage.setItem('ZNZ-token', res.data)
+        localStorage.setItem('znz-token', res.data)
         navigate('/uongozi')
       })
       .catch(err => {
@@ -56,7 +56,7 @@ function Login() {
                 Password
               </label>
             </div>
-            <button className="btn btn--green btn--animeted">Login</button>
+            <button className="btnx btnx--green btn--animeted">Login</button>
           </form>
         </div>
       </div>
