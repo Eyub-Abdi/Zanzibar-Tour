@@ -34,3 +34,9 @@
     transform: scale(0.95);
   }
 }
+
+.alert {
+  margin: -04rem 0 3rem 0;
+  z-index: 1999;
+  transition: all 4s;
+}

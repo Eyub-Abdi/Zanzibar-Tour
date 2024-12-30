@@ -2,7 +2,7 @@ import Joi from 'joi'
 import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // CONTEXT
-import ErrorContext from '../ErrorContext'
+import ErrorContext from '../contexts/ErrorContext'
 import axios from 'axios'
 
 function Login() {
@@ -10,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState(null)
   const dispatch = useContext(ErrorContext)
   const navigate = useNavigate()
+
   const userSchema = Joi.object({ username: Joi.string().min(3).max(50).required().messages({ 'string.empty': 'Invalid username or password.' }), password: Joi.string().required().messages({ 'string.empty': 'Ivalid username or password.' }) })
   const { error, value } = userSchema.validate({ username, password })
 
@@ -20,14 +21,17 @@ function Login() {
     axios
       .post('http://localhost:5000/api/auth', value)
       .then(res => {
-        console.log(res)
+        dispatch({
+          type: 'login',
+          payload: res.data,
+          navigate: path => {
+            navigate(path)
+          }
+        })
         dispatch({ type: 'greenMsg', payload: 'Login success.' })
-        localStorage.setItem('znz-token', res.data)
-        navigate('/uongozi')
       })
       .catch(err => {
         dispatch({ type: 'showErr', payload: 'Invalid username or password.' })
-        console.log(err)
       })
   }
   return (

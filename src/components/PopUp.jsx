@@ -1,22 +1,26 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Joi from 'joi'
 import axios from 'axios'
-import ErrorContext from '../ErrorContext'
+import ErrorContext from '../contexts/ErrorContext'
+import Loader from './Loader'
+import { formatHours } from '../utils/formatDate'
 
 function PopUp() {
   const [numberOfVisitor, setNumberOfVisitor] = useState()
   const [arrivingDate, setArrivingDate] = useState()
+  const [spin, setSpin] = useState(false)
   const dispatch = useContext(ErrorContext)
   const navigate = useNavigate()
-  // ALLOW TODAY IN VALID DATE LIST
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
 
+  useEffect(() => {
+    setSpin()
+  }, [spin])
+  console.log('spnning...', spin)
   const schema = Joi.object({
     numberOfVisitor: Joi.number().min(1).max(50).required().messages({ 'any.required': 'Tell us how many people are comming?', 'number.min': 'How many of you are comming?', 'number.max': 'Can not register more then 50 people.' }),
-    arrivingDate: Joi.date().min(today).required().messages({ 'any.required': 'Ops! so when will you come?', 'date.min': 'Date must be today or latter.' })
+    arrivingDate: Joi.date().min(formatHours()).required().messages({ 'any.required': 'Please select arriving date', 'date.min': 'Date must be today or latter.' })
   })
   const { error } = schema.validate({ numberOfVisitor, arrivingDate })
 
@@ -29,22 +33,28 @@ function PopUp() {
     axios
       .post('http://localhost:5000/api/visitors', totalData)
       .then(() => {
+        setSpin(true)
         localStorage.removeItem('prevData')
         navigate('/')
         dispatch({ type: 'greenMsg', payload: 'Your booking is done, see you in Zanzibar.' })
+        dispatch({ type: 'showAlert' })
       })
       .catch(error => {
         console.log(error.message)
-        dispatch({ type: 'showErr', payload: error.message })
+        dispatch({ type: 'showErr', payload: `${error.message} Try Again Later.` })
       })
+      .finally(setSpin(false))
   }
 
   const hidePopUp = () => {
     navigate('/')
+    localStorage.removeItem('prevData')
+    dispatch({ type: 'greenMsg', payload: 'Your booking is canceled.' })
   }
 
   return (
     <div className={`popup ${hidePopUp.close}`} id="popup">
+      {spin && <Loader />}
       <div className="popup__content">
         <div className="popup__left">
           <img src="./img/zanzibar-8.jpg" alt="Tour photo" className="popup__img" />

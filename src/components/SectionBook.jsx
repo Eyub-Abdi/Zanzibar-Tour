@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import Joi from 'joi'
 import { useContext, useState } from 'react'
-import countries from '../countries'
+import countries from '../utils/countries'
 // COMPONENTS
 // import FlashMassage from './FlashMassage'
-import ErrorContext from '../ErrorContext'
+import ErrorContext from '../contexts/ErrorContext'
 
 function SectionBook() {
   const [fullName, setFullName] = useState('')

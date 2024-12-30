@@ -1,0 +1,66 @@
+@import '../abstracts/variables.scss';
+
+.search {
+  flex: 0 0 40%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: $bp-xsmall) {
+    order: 1;
+    flex: 0 0 100%;
+
+    background-color: $colorGreyLight-2;
+  }
+
+  &__input {
+    font-family: inherit;
+    font-size: $default-font-size;
+    color: $color-gray-light-2;
+    background-color: $color-gray-dark-3;
+    border: none;
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    width: 50%;
+    transition: all 0.2s;
+    margin-right: -3.5rem;
+
+    &::-webkit-input-placeholder {
+      font-weight: 100;
+      color: $colorGreyLight-4;
+    }
+
+    &:focus {
+      outline: none;
+      width: 60%;
+      background-color: $color-gray-dark-3;
+    }
+  }
+
+  &__input:focus + &__button {
+    background-color: $colorGreyLight-3;
+  }
+
+  &__button {
+    //background-color: $colorGreyLight-2;
+    cursor: pointer;
+
+    &:focus,
+    :active {
+      border: none;
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(0.2rem);
+    }
+  }
+
+  &__search {
+    height: 2rem;
+    width: 2rem;
+    fill: $colorGreyDark-2;
+  }
+}

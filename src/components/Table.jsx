@@ -1,19 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { formatDate } from '../utils/formatDate'
+import VisitorContext from '../contexts/VisitorContext'
 
-function Table({ visitors }) {
-  const formatDate = date => {
-    const year = String(date.getFullYear()).slice(-2) // Get last two digits of the year
-    const month = String(date.getMonth() + 1).padStart(2, '0') // Months are 0-indexed
-    const day = String(date.getDate()).padStart(2, '0') // Pad with zero if needed
-
-    return `${year}-${month}-${day}` // Format: yy-mm-dd
-  }
-
-  //const date = new Date() // Replace this with your date object
-  // console.log(formatDate(date)) // Outputs: "24-10-24" for October 24, 2024
-
+function Table() {
+  const visitors = useContext(VisitorContext)
   return (
-    <table className="table table-dark table-hover">
+    <table className="table table-dark table-hover mt-5">
       <thead>
         <tr>
           <th>NO/ID</th>

@@ -3,6 +3,9 @@ import Card from './Card'
 import axios from 'axios'
 import Table from './Table'
 import DashboardNav from './DashboardNav'
+import FlashMassage from './FlashMassage'
+import VisitorContext from '../contexts/VisitorContext'
+import SideBar from './SideBar'
 
 function Dashboard() {
   const [visitors, setVisitors] = useState([])
@@ -12,15 +15,17 @@ function Dashboard() {
       .then(res => setVisitors(res.data))
       .catch(err => console.log(err))
   }, [])
-  console.log(visitors)
-
   return (
     <section className="dashboard position-relative">
-      <DashboardNav />
-      <section className="p-4">
-        <Card />
-        <Table visitors={visitors} />
-      </section>
+      <VisitorContext.Provider value={visitors}>
+        <DashboardNav />
+
+        <section className="p-4">
+          <Card />
+          <FlashMassage />
+          {visitors.length > 0 && <Table />}
+        </section>
+      </VisitorContext.Provider>
     </section>
   )
 }

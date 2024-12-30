@@ -1,22 +1,25 @@
-import { useToast } from '@chakra-ui/react'
 import { useEffect } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
-// CONTEXT
-function FlashMassage({ showFlash, title, description, status }) {
-  const toast = useToast()
+function FlashMassage({ showFlash, description, status }) {
+  const notify = () =>
+    status === 'error'
+      ? toast.error(description, {
+          duration: 3000,
+          position: 'bottom-center'
+        })
+      : toast.success(description, {
+          position: 'bottom-right',
+          duration: 5000
+        })
   useEffect(() => {
-    if (showFlash)
-      toast({
-        title, //: 'Account created.',
-        description, //: "We've created your account for you.",
-        status, //: 'error',
-        duration: 600000000,
-        isClosable: true,
-        sex: {
-          padding: '400px'
-        }
-      })
-  }, [showFlash, toast, title, description, status])
-  return null
+    if (showFlash) notify()
+  }, [showFlash, description, status])
+  return (
+    <div>
+      <Toaster />
+    </div>
+  )
 }
+
 export default FlashMassage

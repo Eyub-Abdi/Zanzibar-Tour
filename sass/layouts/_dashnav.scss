@@ -1,0 +1,43 @@
+.navigation-dash {
+  &__checkbox {
+    display: none;
+    visibility: hidden;
+  }
+  &__button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    // position: fixed;
+    // top: 6rem;
+    // right: 6rem;
+    // z-index: 2000;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 1rem 3rem rgba($black-color, 0.1);
+  }
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    z-index: 1000;
+    transition: all 0.8s cubic-bezier(0.67, 0.01, 0.05, 1.08);
+    background-image: radial-gradient($primary-color-light, $primary-color-dark);
+  }
+
+  &__icon {
+    position: relative;
+    @include centerHorizontalAndVertical;
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      display: inline-block;
+      transition: all 0.2s;
+      background-color: $primary-color-light;
+    }
+  }
+}

@@ -7,9 +7,9 @@ export default function Header() {
         <img src="./img/logo-white.png" alt="Logo" className="header__logo" />
       </div>
       <div className="header__text-box">
-        <h1 className="heading-primary">
-          <span className="heading-primary--main">ZANZIBAR ISLAND</span>
-          <span className="heading-primary--sub">Welcome to Zanzibar</span>
+        <h1 className="heading-primary ">
+          <span className="heading-primary--main u-margin-bottom-small">ZANZIBAR VIBES</span>
+          <span className="heading-primary--sub">Let Joy Lead the Way</span>
         </h1>
         <Button linkTo="#section-features" />
       </div>
